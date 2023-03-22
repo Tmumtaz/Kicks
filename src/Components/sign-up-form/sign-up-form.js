@@ -4,6 +4,7 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../Utils/firebase/firebaseUtils";
+import Button from "../button/button";
 
 
 // set object to generisize the handle change function
@@ -53,9 +54,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
-      <h1>Sign up with your email and password</h1>
-      <div>
+    <div className="sign-up-container">
+      <h2>Dont have an account?</h2>
+      <span>Sign up with your email and password</span>
+      
       <form onSubmit={handleSubmit}>
         <label>Display Name</label>
         <input
@@ -92,9 +94,8 @@ const SignUpForm = () => {
           onChange={handleChange}
           name="confirmPassword"
         />
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
-      </div>
     </div>
   );
 };
