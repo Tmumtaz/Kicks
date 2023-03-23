@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./sign-up.styles.scss";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../Utils/firebase/firebaseUtils";
 import Button from "../button/button";
+import { UserContext } from "../../Contexts/user-context";
 
 
 // set object to generisize the handle change function
@@ -19,6 +20,8 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   // destructure form field values
   const { displayName, email, password, confirmPassword } = formFields;
+
+  const { setCurrentUser } = useContext(UserContext)
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -41,6 +44,8 @@ const SignUpForm = () => {
         email,
         password
       );
+
+      setCurrentUser(user);
       // set the display name on user doc
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
