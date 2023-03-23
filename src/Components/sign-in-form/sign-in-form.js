@@ -18,7 +18,7 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const {setCurrentUser } = useContext(UserContext)
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -26,6 +26,7 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
+    setCurrentUser(user);
     await createUserDocumentFromAuth(user);
   };
 
@@ -33,11 +34,11 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const {user} = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      setCurrentUser(user)
+      setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -61,30 +62,31 @@ const SignInForm = () => {
 
   return (
     <div className="sign-up-container">
+      <div className="header-container">
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
+      </div>
       <form onSubmit={handleSubmit}>
         <input
-          label="Email"
           type="email"
           onChange={handleChange}
           name="email"
           value={email}
+          placeholder="Email"
         />
 
         <input
-          label="Password"
           type="password"
           onChange={handleChange}
           name="password"
           value={password}
+          placeholder="Password"
         />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
           <button onClick={signInWithGoogle}>Sign in with Google</button>
         </div>
       </form>
-      
 
       {/* <Button  onClick={signInWithGoogle}>
             Google sign in

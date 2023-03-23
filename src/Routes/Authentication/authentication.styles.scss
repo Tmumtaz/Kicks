@@ -1,0 +1,10 @@
+.authentication-container {
+//   border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+
+  .form-container {
+    width: 50%;
+    padding: 0 1rem;
+  }
+}

@@ -7,7 +7,6 @@ import {
 import Button from "../button/button";
 import { UserContext } from "../../Contexts/user-context";
 
-
 // set object to generisize the handle change function
 const defaultFormFields = {
   displayName: "",
@@ -21,7 +20,7 @@ const SignUpForm = () => {
   // destructure form field values
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const { setCurrentUser } = useContext(UserContext)
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -62,44 +61,45 @@ const SignUpForm = () => {
     <div className="sign-up-container">
       <h2>Dont have an account?</h2>
       <span>Sign up with your email and password</span>
-      
+
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
         <input
           type="text"
           required
           value={displayName}
           onChange={handleChange}
           name="displayName"
+          placeholder="Display Name"
         />
 
-        <label>Email</label>
         <input
           type="email"
           required
           value={email}
           onChange={handleChange}
           name="email"
+          placeholder="Email"
         />
 
-        <label>Password</label>
         <input
           type="password"
           required
           value={password}
           onChange={handleChange}
           name="password"
+          placeholder="Password"
         />
-
-        <label>Confirm Password</label>
         <input
           type="password"
           required
           value={confirmPassword}
           onChange={handleChange}
           name="confirmPassword"
+          placeholder="Confirm Password"
         />
-        <Button type="submit">Sign Up</Button>
+        <div className="buttons-container">
+          <Button type="submit">Sign Up</Button>
+        </div>
       </form>
     </div>
   );
