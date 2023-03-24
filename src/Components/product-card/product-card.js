@@ -2,6 +2,7 @@ import './product-card.styles.scss'
 
 import Button from '../button/button'
 
+
 const ProductCard = ({ product }) => {
     const { name, imageUrl, price} = product
     return(
