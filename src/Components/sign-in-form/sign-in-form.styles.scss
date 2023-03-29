@@ -1,11 +1,12 @@
 .sign-up-container {
-    border: 1px solid rgba(0, 0, 0, 0.377);
+  border: 2px solid rgba(0, 0, 0, 0.377);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 50vh;
+  height: 60vh;
   border-radius: 6px;
+//   box-shadow: -1px 0px 1px 1px rgba(0, 0, 0, 0.377) ;
 
   form {
     display: flex;
@@ -13,17 +14,22 @@
     justify-content: flex-start;
     align-items: center;
     width: 50%;
-    
+    margin-top: 1rem;
 
     input {
       width: 70%;
-      margin: 1rem 0;
-      padding: 0.6rem 0.2rem;
+      margin: 1.5rem 0;
+      padding: 0.2rem;
       border: none;
       border-bottom: 1px solid rgba(0, 0, 0, 0.377);
-    //   border-radius: 6px;
-      
-      
+
+      &:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-bottom: 1.5px solid black;
+        font-weight: bold;
+      }
     }
   }
 
