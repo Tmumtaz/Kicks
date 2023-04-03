@@ -1,7 +1,10 @@
 .authentication-container {
-//   border: 1px solid red;
+  // border: 1px solid red;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 
   .form-container {
     width: 50%;

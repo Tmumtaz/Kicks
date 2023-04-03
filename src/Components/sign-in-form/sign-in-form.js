@@ -8,6 +8,7 @@ import {
 } from "../../Utils/firebase/firebaseUtils";
 
 import { UserContext } from "../../Contexts/user-context";
+import { FcGoogle } from "react-icons/fc";
 
 const defaultFormFields = {
   email: "",

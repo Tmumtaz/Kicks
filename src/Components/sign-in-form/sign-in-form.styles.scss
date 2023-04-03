@@ -1,20 +1,22 @@
 .sign-up-container {
-  border: 2px solid rgba(0, 0, 0, 0.377);
+  border: 1px solid rgb(228, 226, 226);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   height: 60vh;
   border-radius: 6px;
-//   box-shadow: -1px 0px 1px 1px rgba(0, 0, 0, 0.377) ;
+  padding-top: 1rem;
+  background-color: rgb(228, 226, 226);
 
   form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 50%;
+    width: 60%;
     margin-top: 1rem;
+    
 
     input {
       width: 70%;
@@ -22,6 +24,7 @@
       padding: 0.2rem;
       border: none;
       border-bottom: 1px solid rgba(0, 0, 0, 0.377);
+      background-color: rgb(228, 226, 226);
 
       &:focus {
         outline: none;

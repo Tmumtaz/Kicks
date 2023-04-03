@@ -1,4 +1,3 @@
-import { resultKeyNameFromField } from "@apollo/client/utilities";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -6,10 +5,19 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAts3OhnQWJrNBm20nuHEz2MGULh7tuxHM",
@@ -33,6 +41,46 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, goolgeProvider);
 export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  // create the collection
+  const collectionRef = collection(db, collectionKey);
+
+  // attach batch to database
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    // get document reference
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    // set the document refernece with the value of the objet
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("done");
+};
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, 'categories');
+  //create query to get object snapshot
+  const q = query(collectionRef);
+
+  // fetch snapshots
+  const querySnapshot = await getDocs(q);
+
+  // get map of individual docs
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    // destructure values
+    const {title, items} = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc
+  }, {})
+
+  return categoryMap; 
+}
 
 export const createUserDocumentFromAuth = async (
   userAuth,
@@ -69,7 +117,6 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return await createUserWithEmailAndPassword(auth, email, password);
 };
-
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
