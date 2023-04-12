@@ -6,6 +6,7 @@ import { CartContext } from "../../Contexts/cart-context";
 import CheckoutItem from "../../Components/checkout-item/checkout-item";
 import PaymentForm from "../../Components/payment-form/payment-form";
 
+
 const Checkout = () => {
   const { cartItems, cartTotal } = useContext(CartContext);
   return (
