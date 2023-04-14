@@ -1,5 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 
+
 export const stripePromise = loadStripe(
-  process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
+  "pk_test_51MtER1JPzZLXXuizaPCUMWxbVzi3JqfwTZ5QftDqAgrITtumfcyRU2zGJPUqEng9ztzwmNepPPYGdZxqMgnPsuk400a10nOmoo"
 );

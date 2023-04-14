@@ -42,6 +42,7 @@ export const signInWithGooglePopup = () =>
   signInWithPopup(auth, goolgeProvider);
 export const db = getFirestore();
 
+// add JSON object to firestore with this + useEffect
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
