@@ -9,21 +9,25 @@ import { CategoriesProvider } from "./Contexts/categories-context";
 import { CartProvider } from "./Contexts/cart-context";
 import { Elements } from "@stripe/react-stripe-js";
 import { stripePromise } from "./Utils/stripe/stripe";
+import { Provider } from "react-redux";
+import { store } from "./Store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <CategoriesProvider>
-          <CartProvider>
-            <Elements stripe={stripePromise}>
-              <App />
-            </Elements>
-          </CartProvider>
-        </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+    {/* <Provider store={store}> */}
+      <BrowserRouter>
+        <UserProvider>
+          <CategoriesProvider>
+            <CartProvider>
+              <Elements stripe={stripePromise}>
+                <App />
+              </Elements>
+            </CartProvider>
+          </CategoriesProvider>
+        </UserProvider>
+      </BrowserRouter>
+    {/* </Provider> */}
   </React.StrictMode>
 );
 
